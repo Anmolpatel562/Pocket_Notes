@@ -3,7 +3,7 @@ import axios from 'axios';
 const backendUrl = process.env.REACT_APP_BACKENDURL;
 
 
-export const getAllGroupsByDeviceId = async ({device}) => {
+export const getAllGroupsByDeviceId = async (device) => {
     try{
        console.log(device) 
        const response = await axios.get(`${backendUrl}group/getAllGroupsByDeviceId/${device}`);

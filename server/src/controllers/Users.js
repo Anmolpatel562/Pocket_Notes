@@ -15,7 +15,7 @@ const createUser = async (req,res) => {
 }
 const getExistingUserCount = async (req,res) => {
     try{
-       const response = await User.countDocuments({})
+       const response = await User.find({})
        console.log(response);
        res.status(200).json({
         message:"Counted.",

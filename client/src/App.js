@@ -23,8 +23,9 @@ function App() {
   const fetchExistingUser = async () => {
     const count = await existingUserCount();
     console.log(count);
-    const response = await createUser(`device${count}`);
-    localStorage.setItem("deviceId", `device${count}`);
+    const value = `device${count}`;
+    const response = await createUser(value);
+    localStorage.setItem("deviceId",value);
   };
 
   const handleOutSideModal = (event) => {
