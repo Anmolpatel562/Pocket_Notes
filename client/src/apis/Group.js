@@ -20,3 +20,12 @@ export const createNotes = async ({groupId,text}) => {
         console.log(error);
     }
 }
+
+export const createGroup = async ({ device, name, color }) => {
+    try{
+       const response = await axios.post(`${backendUrl}group/createGroup`,{ device, name, color });
+       return response.data.message;
+    }catch(error){
+        console.log(error);
+    }
+}

@@ -4,6 +4,8 @@
     display: flex;
     justify-content: center;
     align-items: start;
+    position: relative;
+    
 }
 
 .insideContainer{
@@ -15,6 +17,8 @@
     justify-content: start;
     align-items: center;
     gap: 2.5rem;
+    overflow: scroll;
+    overflow-x: hidden;
 }
 
 .groupContainer{
@@ -22,6 +26,7 @@
     width: 100%;
     flex-direction: column;
     gap: 1.5rem;
+    margin-top: 3rem;
 }
 
 .groupHover{
@@ -43,3 +48,20 @@
     align-items: center;
    
 }
+
+.addButtonContainer{
+    background-color: #16008B;
+    height:85px;
+    width: 85px;
+    border-radius: 100%;
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 60px;
+    cursor: pointer;
+}
+

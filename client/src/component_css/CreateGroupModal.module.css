@@ -1,0 +1,39 @@
+.modalContainer{
+    position: absolute;
+    height: 26%;
+    width: 38%;
+    background-color: white;
+    border-radius: 4px;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+    font-size: 23px;
+}
+
+.groupNameContainer{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 2rem;
+}
+
+.colorContainer{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 2rem;
+}
+
+.inputField{
+    width: 60%;
+    height: 38px;
+    border-radius: 20px;
+    border: 1px solid #CCCCCC;
+    padding-left: 1.2rem;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 17px;
+    outline: none;
+}
