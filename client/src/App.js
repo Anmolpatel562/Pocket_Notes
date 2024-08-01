@@ -14,8 +14,18 @@ function App() {
   const [groupList, setGroupList] = useState([]);
 
   useEffect(() => {
-    localStorage.setItem("deviceId","device0");
+    const device = localStorage.getItem("deviceId");
+    if (!device) {
+      fetchExistingUser();
+    }
   }, []);
+
+  const fetchExistingUser = async () => {
+    const count = await existingUserCount();
+    console.log(count);
+    const response = await createUser(`device${count}`);
+    localStorage.setItem("deviceId", `device${count}`);
+  };
 
   const handleOutSideModal = (event) => {
     if (event.target.className === "modalContainer") {
