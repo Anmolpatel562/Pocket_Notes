@@ -38,6 +38,7 @@ const createNotes = async (req, res) => {
     await group.save();
     res.status(201).json({
       message: "Note Added Successfully",
+      group
     });
   } catch (error) {
     res.status(500).json({
@@ -46,4 +47,22 @@ const createNotes = async (req, res) => {
   }
 };
 
-module.exports = { createGroup, createNotes };
+const getAllGroupsByDeviceId = async (req,res) => {
+  try{
+    const device = req.params.device;
+    if(!device){
+      return res.status(400).json({
+        message:"Device not found",
+      })
+    }
+    const groups = await createdGroupSchema.find({device});
+    res.status(200).json({
+      message:"fetched Successfully",
+      groups
+    })
+  }catch(error){
+
+  }
+} 
+
+module.exports = { createGroup, createNotes, getAllGroupsByDeviceId };

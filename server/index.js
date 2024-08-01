@@ -5,8 +5,12 @@ const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 dotenv.config();
 const groupRoutes = require("./src/routes/Group");
+const userRoutes = require("./src/routes/Users");
+const cors = require('cors');
+app.use(cors());
 app.use(bodyParser.json());
 app.use(groupRoutes);
+app.use(userRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hello User");
