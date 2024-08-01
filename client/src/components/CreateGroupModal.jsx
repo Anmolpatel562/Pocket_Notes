@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "../component_css/CreateGroupModal.module.css";
 import { createGroup } from "../apis/Group";
 import { toast } from "react-toastify";
@@ -12,7 +12,16 @@ const colors = [
   "#6691FF",
 ];
 
-const CreateGroupModal = ({ showModal, setShowModal }) => {
+const CreateGroupModal = ({ showModal, setShowModal, groupList }) => {
+
+  const [groupName,setGroupName] = useState([]); 
+ 
+  useEffect(()=>{
+    const names = groupList.map((group) => group.name);
+    setGroupName(names);
+  },[showModal]);
+
+
   const [newGroup, setNewGroup] = useState({
     device: localStorage.getItem("deviceId"),
     name: "",
@@ -31,7 +40,15 @@ const CreateGroupModal = ({ showModal, setShowModal }) => {
       let device = newGroup.device.trim();
       let name = newGroup.name.trim();
       let color = newGroup.color.trim();
+       console.log(groupName)
+      if(groupName.includes(name)){
+        toast.error("Group with this name already exists.");
+        return ;
+      }
+
       const response = await createGroup({ device, name, color });
+
+
       toast.success(response, {
         position: "top-center",
         autoClose: 5000,
@@ -41,7 +58,6 @@ const CreateGroupModal = ({ showModal, setShowModal }) => {
         draggable: true,
         progress: undefined,
         theme: "light",
-      
       });
       setShowModal(false);
     } catch (error) {

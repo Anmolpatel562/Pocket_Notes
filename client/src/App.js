@@ -11,6 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 function App() {
   const [selectedGroup, setSelectedGroup] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [groupList, setGroupList] = useState([]);
 
   useEffect(() => {
     const device = localStorage.getItem("deviceId");
@@ -49,6 +50,7 @@ function App() {
             <CreateGroupModal
               showModal={showModal}
               setShowModal={setShowModal}
+              groupList={groupList} 
             ></CreateGroupModal>
           </div>
         </div>
@@ -60,6 +62,8 @@ function App() {
         setSelectedGroup={setSelectedGroup}
         showModal={showModal}
         setShowModal={setShowModal}
+        groupList={groupList} 
+        setGroupList={setGroupList}
       ></GroupList>
       {selectedGroup === null ? (
         <NotesComponent />

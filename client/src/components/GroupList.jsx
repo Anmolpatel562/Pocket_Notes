@@ -3,12 +3,17 @@ import styles from "../component_css/GroupList.module.css";
 import { getAllGroupsByDeviceId } from "../apis/Group";
 import { setProfileLetter } from "../utility/ProfileLetter";
 
-const GroupList = ({ selectedGroup, setSelectedGroup, showModal, setShowModal }) => {
-  const [groupList, setGroupList] = useState([]);
-
+const GroupList = ({
+  selectedGroup,
+  setSelectedGroup,
+  showModal,
+  setShowModal,
+  groupList,
+  setGroupList,
+}) => {
   useEffect(() => {
     fetchAllGroups();
-  }, [selectedGroup,showModal]);
+  }, [selectedGroup, showModal]);
 
   const fetchAllGroups = async () => {
     const response = await getAllGroupsByDeviceId(
@@ -23,7 +28,7 @@ const GroupList = ({ selectedGroup, setSelectedGroup, showModal, setShowModal })
 
   const createGroupHandler = () => {
     setShowModal(true);
-  }
+  };
 
   return (
     <div className={styles.container}>
@@ -31,7 +36,20 @@ const GroupList = ({ selectedGroup, setSelectedGroup, showModal, setShowModal })
         <div>+</div>
       </div>
       <div className={styles.insideContainer}>
-        <div style={{ fontSize: "38px", fontWeight: "500" ,position:"fixed",backgroundColor:"white",width:"24.5%",textAlign:"center",top:"25px",height:"60px"}}>Pocket Notes</div>
+        <div
+          style={{
+            fontSize: "38px",
+            fontWeight: "500",
+            position: "fixed",
+            backgroundColor: "white",
+            width: "23.7%",
+            textAlign: "center",
+            top: "25px",
+            height: "60px",
+          }}
+        >
+          Pocket Notes
+        </div>
         <div className={styles.groupContainer}>
           {groupList.map((group) => (
             <div
@@ -53,7 +71,9 @@ const GroupList = ({ selectedGroup, setSelectedGroup, showModal, setShowModal })
                     fontSize: "18px",
                   }}
                 >
-                  <div style={{fontSize: "22px",fontWeight:"600"}}>{setProfileLetter(group.name)}</div>
+                  <div style={{ fontSize: "22px", fontWeight: "600" }}>
+                    {setProfileLetter(group.name)}
+                  </div>
                 </div>
                 <div style={{ fontSize: "22px" }}>{group.name}</div>
               </div>
