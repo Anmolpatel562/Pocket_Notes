@@ -12,7 +12,7 @@ export const existingUserCount = async () => {
     }
 }
 
-export const createUser = async (device) => {
+export const createUser = async ({device}) => {
     try{
         console.log(device)
         const response = await axios.post(`${backendUrl}user/createUser`,{device});

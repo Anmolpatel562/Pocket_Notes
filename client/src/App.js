@@ -15,7 +15,6 @@ function App() {
 
   useEffect(() => {
     const device = localStorage.getItem("deviceId");
-    console.log(device);
     if (!device) {
       fetchExistingUser();
     }
@@ -23,12 +22,9 @@ function App() {
 
   const fetchExistingUser = async () => {
     const count = await existingUserCount();
-    if(!count){
-      count = 123;
-    }
     console.log(count);
-    const response = await createUser(`device0`);
-    localStorage.setItem("deviceId", `device0`);
+    const response = await createUser(`device${count}`);
+    localStorage.setItem("deviceId", `device${count}`);
   };
 
   const handleOutSideModal = (event) => {
