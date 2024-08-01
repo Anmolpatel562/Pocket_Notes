@@ -5,11 +5,8 @@ const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 dotenv.config();
 const groupRoutes = require("./src/routes/Group");
-const notesRoutes = require("./src/routes/Notes");
-
 app.use(bodyParser.json());
 app.use(groupRoutes);
-app.use(notesRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hello User");
